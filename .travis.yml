@@ -1,0 +1,39 @@
+language: python
+python:
+  - "3.9"
+
+os: linux
+dist: jammy
+
+addons:
+  apt:
+    packages:
+      - scons
+      - build-essential
+      - libssl-dev
+      - libffi-dev
+      - ccpython3-dev
+      - libgstreamer1.0-dev
+      - gstreamer1.0-plugins-base
+      - gstreamer1.0-plugins-good
+      - libasound2-dev
+      - libsdl2-dev
+      - libsdl2-image-dev
+      - libsdl2-mixer-dev
+      - libsdl2-ttf-dev
+      - libgles2-mesa-dev
+      - libpango1.0-dev
+      - openjdk-17-jdk
+      - zip
+      - unzip
+
+install:
+  - pip install --upgrade pip
+  - pip install buildozer cython virtualenv
+
+script:
+  - buildozer -v android debug
+
+branches:
+  only:
+    - master
